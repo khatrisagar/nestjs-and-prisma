@@ -48,8 +48,16 @@ $ npx prisma --help
 
 below comand read the schema and generate a migration here dev migration delete all the old data so that for the production we have to use diffrent command
 
+dev
+
 ```bash
 $ npx prisma migrate dev
+```
+
+production
+
+```bash
+$ npx prisma migrate deploy
 ```
 
 when we run above command it automatically run below command
@@ -70,4 +78,34 @@ $ npx prisma studio
 after taht we have to import our databse module to the module where we have to use it
 
 next js using dto where we data is push in object and can validate our data
-# nestjs-and-prisma
+
+# what is pipes in nestjs
+
+pipes are a functions that transforms a data
+
+to use pipes inside DTO we have to install two packages
+
+````bash
+$ yarn add class-validator class-transformer
+        ```
+````
+
+# use config in nest js
+
+```bash
+$ yarn add @nestjs/config
+```
+
+# authentication in nest js
+
+```bash
+$ yarn add @nestjs/passport passport passport-local @nestjs/jwt passport-jwt
+```
+
+```bash
+$ yarn add -D @types/passport-local @types/passport-jwt
+```
+
+# guards in nest js work as middleware
+
+@UseGuards(AuthGuard('jwt')) to use a gaurd

@@ -12,15 +12,21 @@ datasource db {
 
 model User {
   id       Int    @id @default(autoincrement())
-  email    String
+  email    String @unique
   password String
 
   firstname String?
   lastname  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  bookmarks Bookmark[]
+
+  // to create name specified table
+  @@map("users")
 }
 
+// one user - >  many bokmark one to many realation 
 model Bookmark {
   id          Int      @id @default(autoincrement())
   title       String
@@ -28,4 +34,9 @@ model Bookmark {
   description String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  @@map("bookmarks")
 }
